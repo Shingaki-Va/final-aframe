@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Aframe-Proyect</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+</head>
+
+
+<body style="margin: 0px !important; margin-left: 100px !important; margin-top: 0px !important; overflow: hidden;">
+
+
+    
+<div class="group">
+  <button onclick="blooms();">blooms</button>
+  <button id="button1" onclick="color1(this)" style="background-color:#c9002f" position: absolute;
+margin-top: 300px; > color red </button> 
+  <button id="button2" onclick="color2(this)" style="background-color:#0051ff"position: absolute;
+margin-top: 350px; > color blue </button> 
+  <button id="button3" onclick="color3(this)" style="background-color:#00ff4c"position: absolute;
+margin-top: 200px; > color green </button> 
+  </div>
+
+
+  <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Loading, please wait...</div>
+  </div>
+
+  <div class="scene">
+  <a-scene 
+    cursor="rayOrigin: mouse" 
+    vr-mode-ui="enabled: false;"
+    renderer="logarithmicDepthBuffer: true;"
+
+  >
+      <!-- embedded
+    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;" -->
+    <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+    <a-nft
+      type="nft"
+      url="src\dataNFT\window\window"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    >
+      <!-- look-at="[camera]" -->
+      <a-entity      
+        treeman      
+        id="tree"
+        gltf-model="src\assets\Vase01.glb"
+        scale="30 10 30"
+        position="250 0 0"
+        rotation="-80 0 0"
+        opacity="5"
+      >
+      <!-- scale="10 5 10" -->
+      </a-entity>
+      
+      <a-entity
+       
+      id="rose"
+      gltf-model="src\assets\rose.glb"
+      scale="10 10 10"
+      position="250 0 0"
+      rotation="-80 0 0"
+      animation="property: position; to: 250 0 -150; dur: 10000; easing: linear; loop: false, startAnimation, autoplay: false"
+      animation__2="property: scale; to: 200 150 200; dur: 30000; easing: easeInCubic; loop: false, startAnimation, autoplay: false"
+    > 
+   <!--  <a-animation attribute="scale" dur="10000" fill="forwards" to="200 150 200" begin="startAnimation" ></a-animation> -->
+
+    </a-entity>
+    
+    </a-nft>
+    <a-entity camera zoom="1" fov="60"></a-entity>
+  </a-scene>
+</div>
+
+
+</script>
+</body>
